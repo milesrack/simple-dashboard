@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Dashboard</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/bootstrap.min.css" rel="stylesheet"> 
+    <head>
+    <style>
+    .infoHeader{
+        font-variant-caps: all-petite-caps;
+    }
+    .info{
+        font-size: 2rem;
+        white-space: pre-wrap;
+    }
+    </style>
+    <body class="bg-dark text-light">
+        <div class="container-fluid text-center p-5">
+            <h6 class="infoHeader">Hostname</h6>
+            <pre class="info"><%=hostname%></pre>
+            <h6 class="infoHeader">IP</h6>
+            <pre class="info"><%=ip%></pre>
+            <h6 class="infoHeader">Uptime</h6>
+            <pre class="info"><%=uptime%></pre>
+        </div>
+        <script src="js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
