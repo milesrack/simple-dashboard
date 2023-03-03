@@ -10,7 +10,7 @@ cd simple-dashboard
 ## Usage
 First build the docker image:
 ```
-docker run -p 3000:3000 -d simple-dashboard
+docker build -t simple-dashboard:latest .
 ```
 
 After building the image run it in a container:
