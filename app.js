@@ -5,6 +5,15 @@ const os = require('os');
 const app = express();
 const port = 3000;
 
+var ip = () => {
+	try {
+		return os.networkInterfaces()['eth0'][0]['address'];
+	}
+	catch {
+		return os.networkInterfaces()['lo'][0]['address'];
+	}
+}
+
 var uptime = () => {
 	var t = os.uptime();
 	var days = Math.floor(t / 3600 / 24);
@@ -19,7 +28,7 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules', 'bootstrap', 
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-	res.render('index', {hostname:process.env.HOSTNAME_ENV, ip:process.env.IP_ENV, uptime:uptime()});
+	res.render('index', {hostname:os.hostname(), ip:ip(), uptime:uptime()});
 })
 
 app.listen(port, () => {
