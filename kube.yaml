@@ -18,3 +18,33 @@ spec:
         ports:
         - containerPort: 3000
         imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-dashboard
+spec:
+  selector:
+    app: simple-dashboard
+  ports:
+  - port: 80
+    targetPort: 3000
+  type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: simple-dashboard-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - http:
+      paths:
+      - path: "/"
+        pathType: Prefix
+        backend:
+          service:
+            name: simple-dashboard
+            port: 
+              number: 80
